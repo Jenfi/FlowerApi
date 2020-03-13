@@ -1,0 +1,28 @@
+.flower-deck{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1000px;
+}
+
+.flower-card{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 12px;
+}
+
+a{
+  text-decoration: none;
+}
+
+p{
+  margin-left: 5px;
+}
+
+span{
+  font-style: italic;
+}

@@ -1,0 +1,9 @@
+.comment-button{
+  width: 100px;
+  border: solid black 1px;
+}
+
+textarea{
+  width: 400px;
+  height: 100px;
+}

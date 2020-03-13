@@ -1,0 +1,27 @@
+section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+section h1{
+  position: absolute;
+}
+
+.hero{
+  width: 100%;
+  height: 950px;
+  opacity: 50%;
+  position: relative;
+  top: 60px;
+  z-index: 0;
+}
+
+svg{
+  width: 90px;
+  height: auto;
+  opacity: 70%;
+}
