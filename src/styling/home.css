@@ -1,9 +1,10 @@
 .flower-deck{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: 1500px;
+  margin-top: 100px;
 }
 
 .flower-card{
@@ -13,6 +14,18 @@
   align-items: center;
   flex-wrap: wrap;
   margin: 12px;
+}
+
+.flower-container{
+  width: 350px;
+  height: 350px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
 }
 
 a{

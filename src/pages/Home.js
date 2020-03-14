@@ -19,8 +19,9 @@ export const Home = () => {
         <li className="flower-card">
           <Link to={`flower/${index}`} key={index}>
             {/* <a href={`https://flowers-mock-data.firebaseio.com/flowers/${flower.__v.numberInt}.json`}> */}
-            {flower.cover_image ? <img src={flower.cover_image} height="200px" alt="" /> : <h1>No pic avail</h1>}
-            <p><span>{flower.latin_name}</span> - {flower.common_name}</p>
+            <div className="flower-container" style={{ backgroundImage: `url(${flower.cover_image})` }} > <h3>{flower.latin_name}</h3></div>
+            {/* {flower.cover_image ? <img src={flower.cover_image} height="200px" alt="" /> : <h1>No pic avail</h1>} */}
+            <p> {flower.common_name}</p>
             {/* </a> */}
           </Link>
         </li>
