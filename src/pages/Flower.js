@@ -3,41 +3,33 @@ import { useParams } from 'react-router-dom'
 import { CommentForm } from '../components/CommentForm'
 import { Comments } from '../components/Comments'
 import '../styling/flower.css'
+import '../styling/comment.css'
 
 export const Flower = () => {
   const [uniqueFlower, setUniqueFlower] = useState([])
   const [comments, setComments] = useState([])
-
   const { index } = useParams()
 
-  // const flowerId = 0
 
   useEffect(() => {
     fetch(`https://flowers-mock-data.firebaseio.com/flowers/${index}.json`)
-      // fetch(`https://flowers-mock-data.firebaseio.com/flowers/${flowerId}.json`)
-
-      // fetch('https://flowers-mock-data.firebaseio.com/flowers/0.json')
       .then((res) => res.json())
       .then((json) => {
         setUniqueFlower(json)
-        // console.log(json)
+        //setLoading
       })
   }, [index])
 
   useEffect(() => {
     fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}.json`)
-      // fetch('https://flowers-mock-data.firebaseio.com/comments/jenfi/0.json')
       .then((res) => res.json())
       .then((json) => {
         setComments(json)
-        console.log(json)
       })
   }, [])
 
   return (
     <article>
-
-      {/* {Object.values(uniqueFlower).map((flower) => ( */}
       <section className="flower-section">
         <h1>{uniqueFlower.common_name} - <span>{uniqueFlower.latin_name}</span></h1>
         {uniqueFlower.sun === true && (
@@ -66,26 +58,29 @@ export const Flower = () => {
         </div>
       </section>
       {/* ))} */}
-      <CommentForm />
-      {!comments && (
+      <section className="comments">
+        <CommentForm />
+        {!comments && (
+          <h5>There are no comments posted about {uniqueFlower.common_name} yet</h5>
+        )}
+        {comments && (
+          // <section className="comment-container">
+          <>
+            {Object.values(comments).map((comment) => (
+              <ul className="comment-container" >
+                <li>{comment.comment}</li>
+                <div className="button-container">
+                  <button type="button" className="edit-button">Edit</button>
+                  <button type="button" className="remove-button">Remove</button>
+                </div>
+              </ul>
+            ))
+            }
+            {/* </section> */}
+          </>
+        )}
 
-        <h5>There are no comments posted about {uniqueFlower.common_name} yet</h5>
-
-      )}
-
-      {comments && (
-        <article className="comment-container">
-          {Object.values(comments).map((comment) => (
-            <div className="comment" >
-              <h2>{comment.comment}</h2>
-              <button type="button">Edit</button>
-              <button type="button">Remove</button>
-            </div>
-          ))
-          }
-        </article>
-      )}
-
+      </section>
       {/* <Comments /> */}
     </article>
   )

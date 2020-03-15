@@ -41,3 +41,13 @@ a{
   color: black;
 }
 
+button{
+  width: 150px;
+  border: solid black 1px;
+  font-size: 18px;
+  padding: 7px;
+  width: 120px;
+  background: #FFF;
+  font-family: 'Noto Serif', serif;
+}
+
