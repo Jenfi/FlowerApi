@@ -18,7 +18,7 @@ export const Home = () => {
 
   return (
     <article className="flower-list">
-      <h2>We gather all your favourite flowers</h2>
+      <h2>We have gathered all your favourite flowers</h2>
       <ul className="flower-deck">
         {flowers.map((flower, index) => (
           <li className="flower-card">
