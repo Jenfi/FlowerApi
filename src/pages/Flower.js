@@ -69,7 +69,7 @@ export const Flower = () => {
       <CommentForm />
       {!comments && (
 
-        <p>There are no comments posted about {uniqueFlower.common_name} yet</p>
+        <h5>There are no comments posted about {uniqueFlower.common_name} yet</h5>
 
       )}
 
@@ -87,10 +87,6 @@ export const Flower = () => {
       )}
 
       {/* <Comments /> */}
-
-      {/* {uniqueFlower.map((flower) => ( */}
-      {/* <h2>{flower.common_name}</h2> */}
-      {/* ))} */}
     </article>
   )
 }
