@@ -1,9 +1,36 @@
 .comment-button{
-  width: 100px;
+  width: 150px;
   border: solid black 1px;
+  font-size: 18px;
+  padding: 7px;
+  width: 120px;
+  background: #FFF;
+  font-family: 'Noto Serif', serif;
 }
 
 textarea{
-  width: 400px;
-  height: 100px;
+  width: 600px;
+  height: 120px;
+  font-size: 24px;
+  padding: 7px;
+  border: 1px solid black;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+form{
+  margin-top:20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+form p{
+  align-self: flex-end;
+  margin: 7px;
+  font-size: 18px;
+}
+
+.message{
+  padding-top: 20px;
 }

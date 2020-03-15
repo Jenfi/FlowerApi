@@ -4,6 +4,8 @@ import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { Home } from './pages/Home'
 import { Flower } from './pages/Flower'
+import { Footer } from './components/Footer'
+
 // import { ReactComponent as Arrow } from './attributes/arrow.svg'
 import './styling/hero.css'
 import './styling/app.css'
@@ -25,6 +27,7 @@ export const App = () => {
             <Flower />
           </Route>
         </Switch>
+        <Footer />
       </article>
     </BrowserRouter>
   )

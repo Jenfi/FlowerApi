@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { CommentForm } from '../components/CommentForm'
 import { Comments } from '../components/Comments'
+import '../styling/flower.css'
 
 export const Flower = () => {
   const [uniqueFlower, setUniqueFlower] = useState([])
@@ -22,31 +23,35 @@ export const Flower = () => {
   }, [index])
 
   return (
-    <div>
+    <article>
       {/* {Object.values(uniqueFlower).map((flower) => ( */}
-      <div>
-        <img src={uniqueFlower.cover_image} width="200px" alt="" />
-        <h1>{uniqueFlower.common_name}</h1>
-        <h3>{uniqueFlower.latin_name}</h3>
+      <section className="flower-section">
+        <h1>{uniqueFlower.common_name} - <span>{uniqueFlower.latin_name}</span></h1>
         {uniqueFlower.sun === true && (
           <p>Sunny</p>
         )}
         {uniqueFlower.sun === false && (
           <p>Not sunny</p>
         )}
-        <p>About:<span>{uniqueFlower.notes}</span></p>
-        <p>Blooming season: <span>{uniqueFlower.blooming_season}</span></p>
-        {/* <p>Soil preferences: <span>{uniqueFlower.soil}</span></p> */}
-        {/* LÄGG TILL EN .SPLICE '' */}
-        <p>Height:
-          {/* {Object.values(uniqueFlower).height.map((flower) => ( */}
-          {/* {uniqueFlower.height.map((flower) => ( */}
-          {/* <span>{flower}</span> */}
-          {/* ))} */}
+        <div className="flower-details">
+          <img src={uniqueFlower.cover_image} width="400px" alt="" />
 
-          {/* ))} */}
-        </p>
-      </div>
+          <ul className="flower-info">
+            <li>About: <span>{uniqueFlower.notes}</span></li>
+            <li>Blooming season: <span>{uniqueFlower.blooming_season}</span></li>
+            {/* <p>Soil preferences: <span>{uniqueFlower.soil}</span></p> */}
+            {/* LÄGG TILL EN .SPLICE '' */}
+            <li>Height:
+          {/* {Object.values(uniqueFlower).height.map((flower) => ( */}
+              {/* {uniqueFlower.height.map((flower) => ( */}
+              {/* <span>{flower}</span> */}
+              {/* ))} */}
+
+              {/* ))} */}
+            </li>
+          </ul>
+        </div>
+      </section>
       {/* ))} */}
       <CommentForm />
       <Comments />
@@ -54,6 +59,6 @@ export const Flower = () => {
       {/* {uniqueFlower.map((flower) => ( */}
       {/* <h2>{flower.common_name}</h2> */}
       {/* ))} */}
-    </div>
+    </article>
   )
 }

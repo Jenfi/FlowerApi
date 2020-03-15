@@ -1,0 +1,31 @@
+.flower{
+  margin-top: 140px
+}
+.flower-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  border-bottom: 1px solid black;
+  padding:  0 150px 80px 150px;
+}
+
+.flower-section h1{
+position: relative;
+margin-top: 20px;
+margin-bottom: 60px;
+}
+
+.flower-info{
+  list-style: none;
+  font-size: 32px;
+  margin-left: 20px;
+}
+
+.flower-details{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 60px;
+}
