@@ -20,7 +20,9 @@ export const Home = () => {
         {flowers.map((flower, index) => (
           <li className="flower-card">
             <Link to={`flower/${index}`} key={index}>
-              <div className="flower-container" style={{ backgroundImage: `url(${flower.cover_image})` }} > {!flower.cover_image ? <h4>No pic available</h4> : null}<h3>{flower.latin_name}</h3></div>
+              <div className="flower-container" style={{ backgroundImage: `url(${flower.cover_image})` }} > {!flower.cover_image ? <h4>No pic available</h4> : null}
+                <h3 className="flower-highlight">{flower.latin_name}</h3>
+              </div>
               <p> {flower.common_name}</p>
             </Link>
           </li>
