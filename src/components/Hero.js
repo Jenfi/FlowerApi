@@ -5,7 +5,7 @@ import '../styling/hero.css'
 export const Hero = () => {
 
   return (
-    <section>
+    <section className="hero-container">
       <div className="hero" style={{ backgroundImage: `url(${hero})` }} />
       {/* <h1> We've gathered all your favourite flowers</h1> */}
 

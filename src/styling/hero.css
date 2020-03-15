@@ -1,10 +1,13 @@
-section{
-  display: flex;
+.hero-container{
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   width: 100%;
-  margin-bottom: 40px;
+  /* height: 700px; */
+  position: relative;
+  top: 100px;
+  /* margin-bottom: 40px; */
 }
 
 section h1{
@@ -13,10 +16,10 @@ section h1{
 
 .hero{
   width: 100%;
-  height: 600px;
+  height: 800px;
   opacity: 50%;
-  position: relative;
-  top: 100px;
+  /* position: relative; */
+  /* top: 100px; */
   z-index: 0;
 }
 
