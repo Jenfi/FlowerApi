@@ -11,6 +11,8 @@ export const Home = () => {
       .then((res) => res.json())
       .then((json) => {
         setFlowers(json)
+        console.log(json)
+
       })
   }, [])
 

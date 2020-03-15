@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
-import '../styling/commentform.css'
-import '../styling/app.css'
-export const CommentForm = () => {
 
-  const [comment, setComment] = useState('')
+export const EditComment = () => {
+
+  const [edit, setEdit] = useState(false)
   // const [post, setPost] = useState()
 
-  const handleSubmitComment = () => {
+  const handleEditComment = () => {
     // fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${flowerId}.json`, {
-    fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/0.json`, {
+    fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}/${name}.json`, {
 
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify({ comment }),
       headers: { 'Content-Type': 'application/json' }
     }).catch((err) => console.log('error:', err))
