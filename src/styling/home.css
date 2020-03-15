@@ -4,7 +4,7 @@
   align-items: center;
   flex-wrap: wrap;
   max-width: 1500px;
-  margin-top: 80px;
+  margin-top: 100px;
 }
 
 .flower-card{
@@ -28,6 +28,7 @@
   align-items: center;
   font-size: 32px;
   color: #FFF;
+  position: relative;
 }
 
 .flower-highlight{
@@ -42,13 +43,24 @@
   color: #FFF;
 }
 
+.flower-container:hover::after{
+  background-color: #FFF;
+  opacity: 30%;
+  position: absolute;
+  content: "";
+  top: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+}
+
 .flower-container h4{
   color: black;
   font-size: 24px;
 }
 
 .flower-list{
-  margin-top: 100px;
+  margin-top: 80px;
 }
 a{
   text-decoration: none;

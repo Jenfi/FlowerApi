@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../styling/home.css'
+import '../styling/app.css'
 
 export const Home = () => {
   const [flowers, setFlowers] = useState([])
@@ -23,7 +24,7 @@ export const Home = () => {
               <div className="flower-container" style={{ backgroundImage: `url(${flower.cover_image})` }} > {!flower.cover_image ? <h4>No pic available</h4> : null}
                 <h3 className="flower-highlight">{flower.latin_name}</h3>
               </div>
-              <p> {flower.common_name}</p>
+              <h5>{flower.common_name}</h5>
             </Link>
           </li>
         ))}
