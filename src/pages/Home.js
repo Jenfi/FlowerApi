@@ -5,16 +5,22 @@ import '../styling/app.css'
 
 export const Home = () => {
   const [flowers, setFlowers] = useState([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     fetch('https://flowers-mock-data.firebaseio.com/flowers.json')
       .then((res) => res.json())
       .then((json) => {
         setFlowers(json)
-        console.log(json)
-
+        setLoading(false)
       })
   }, [])
+
+  if (loading === true) {
+    return (
+      <h3>Loading...</h3>)
+  }
 
   return (
     <article className="flower-list">

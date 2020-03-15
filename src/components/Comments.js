@@ -24,7 +24,7 @@ export const Comments = (props) => {
       {Object.values(comments).map((comment) => (
         <div className="comment" >
           <h2>{comment.comment}</h2>
-          <button type="button">Edit</button>
+          {/* <button type="button">Edit</button> */}
           <button type="button">Remove</button>
         </div>
       ))

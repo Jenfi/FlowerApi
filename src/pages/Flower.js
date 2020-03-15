@@ -1,27 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { CommentForm } from '../components/CommentForm'
-import { Comments } from '../components/Comments'
-import '../styling/flower.css'
-import '../styling/comment.css'
-import { DeleteComment } from 'components/DeleteComment'
-import { ReactComponent as Sunny } from '../attributes/sun.svg'
 import { ReactComponent as Cloudy } from '../attributes/cloud.svg'
+import { ReactComponent as Sunny } from '../attributes/sun.svg'
+import '../styling/commentform.css'
+import '../styling/comment.css'
+import '../styling/flower.css'
 
 
 export const Flower = () => {
   const [uniqueFlower, setUniqueFlower] = useState([])
   const [commented, setCommented] = useState([])
   const [comment, setComment] = useState('')
+  const [loading, setLoading] = useState(false)
   const { index } = useParams()
 
 
+
   useEffect(() => {
+    setLoading(true)
     fetch(`https://flowers-mock-data.firebaseio.com/flowers/${index}.json`)
       .then((res) => res.json())
       .then((json) => {
         setUniqueFlower(json)
-        //setLoading
+        setLoading(false)
         console.log(json)
       })
   }, [index])
@@ -44,44 +45,32 @@ export const Flower = () => {
   }, [])
 
 
-  // const handleWeatherIcon = () => {
-  //   if (uniqueFlower.sun === true) {
-  //     <Sunny />
-  //   } else {
-  //     <Cloudy />
-  //   }
-  // }
-
+  if (loading === true) {
+    return (
+      <h3>Loading...</h3>
+    )
+  }
 
   return (
-    <article>
+    <>
       <section className="flower-section">
-        <h1>{uniqueFlower.common_name} - <span>{uniqueFlower.latin_name}</span></h1>
+        <h2>{uniqueFlower.common_name} - <span>{uniqueFlower.latin_name}</span></h2>
 
-        {uniqueFlower.sun === true && uniqueFlower.sun !== false && (
-          <Sunny />
-        )}
-        {uniqueFlower.sun == false && uniqueFlower.sun !== true && (
-          <Cloudy />)}
+        {uniqueFlower.sun === true ? <Sunny /> : <Cloudy />}
+
         < div className="flower-details">
-          {uniqueFlower.cover_image ? <img src={uniqueFlower.cover_image} width="400px" alt="" /> : <h5 className="no-picture">No picture available</h5>}
+          <div className="flower-image" style={{ backgroundImage: `url(${uniqueFlower.cover_image})` }}></div> {!uniqueFlower.cover_image ? <h4>No pic available</h4> : null}
+          {/* {uniqueFlower.cover_image ? <img src={uniqueFlower.cover_image} width="400px" alt="" /> : <h5 className="no-picture">No picture available</h5>} */}
           <ul className="flower-info">
             <li>About: <span>{uniqueFlower.notes}</span></li>
             <li>Blooming season: <span>{uniqueFlower.blooming_season}</span></li>
-            {/* <p>Soil preferences: <span>{uniqueFlower.soil}</span></p> */}
+            <li>Soil preferences: <span> </span></li>
             {/* LÄGG TILL EN .SPLICE '' */}
             <li>Height:
-          {/* {Object.values(uniqueFlower).height.map((flower) => ( */}
-              {/* {uniqueFlower.height.map((flower) => ( */}
-              {/* <span>{flower}</span> */}
-              {/* ))} */}
-
-              {/* ))} */}
             </li>
           </ul>
         </div>
       </section>
-      {/* ))} */}
       <section className="comments">
         <div className="message">
           <h3>Share your thoughts with us!</h3>
@@ -107,19 +96,21 @@ export const Flower = () => {
         {commented && (
           <>
             {Object.values(commented).map((comment) => (
-              <ul className="comment-container" >
-                <li>{comment.comment}</li>
-                <div className="button-container">
-                  <button type="button" className="edit-button">Edit</button>
-                  <button type="button" className="remove-button">Remove</button>
-                  {/* <DeleteComment /> */}
-                </div>
-              </ul>
+              <>
+                {comment.length === 0 && (null)}
+                < ul className="comment-container" >
+                  <li>{comment.comment}</li>
+                  <div className="button-container">
+                    <button type="button" className="remove-button">Remove</button>
+                    {/* <DeleteComment /> */}
+                  </div>
+                </ul>
+              </>
             ))
             }
           </>
         )}
       </section>
-    </article >
+    </>
   )
 }

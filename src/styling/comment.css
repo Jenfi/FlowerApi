@@ -13,14 +13,6 @@
   margin-bottom: 60px;
 }
 
-.edit-button{
-  margin: 7px 5px 0 0;
-  background-color: papayawhip;
-  width:auto;
-  padding: 4px;
-  border: none;
-}
-
 .remove-button{
   margin: 7px 0 0 0;
   background-color: lightgray;

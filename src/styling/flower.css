@@ -6,9 +6,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 180px;
   border-bottom: 1px solid black;
-  padding:  0 150px 80px 150px;
+  padding: 0 150px 200px 150px;
+  margin-bottom: 200px;
 }
 
 .flower-section h1{
@@ -21,15 +22,42 @@ margin-bottom: 60px;
   list-style: none;
   font-size: 32px;
   margin-left: 20px;
+  margin-top: 30px;
+}
+
+.flower-info li{
+  display: flex;
+  align-items: center;
 }
 
 .flower-details{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
-  margin-top: 60px;
+  margin-top: 100px;
 }
 
+.flower-image{
+  width: 500px;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* .flower-section ul{
+  display: flex;
+  align-items: baseline;
+}
+
+.flower-section li{
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+} */
 .no-picture{
   font-size: 24px;
+}
+
+svg{
+  margin-top: 80px;
 }

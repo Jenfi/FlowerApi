@@ -45,6 +45,10 @@ p{
   margin-left: 5px;
 }
 
+li{
+  margin-bottom: 12px;
+}
+
 span{
   font-style: italic;
 }
@@ -55,7 +59,8 @@ button{
   font-size: 18px;
   padding: 7px;
   width: 120px;
-  background: #FFF;
+  background: black;
   font-family: 'Noto Serif', serif;
+  color: #FFF;
 }
 
