@@ -21,7 +21,7 @@ h2{
 font-family: 'Noto Serif', serif;
 font-weight: 400;
 font-size: 38px;
-margin-top: 100px;
+/* margin-top: 100px; */
 }
 
 h3{
@@ -39,6 +39,14 @@ h5{
 a{
   text-decoration: none;
   color: black;
+}
+
+p{
+  margin-left: 5px;
+}
+
+span{
+  font-style: italic;
 }
 
 button{
