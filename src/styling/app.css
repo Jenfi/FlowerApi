@@ -10,4 +10,21 @@ article{
   align-items: center;
 }
 
+h1{
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 400;
+  /* font-family: 'Raleway', sans-serif; */
+}
+
+h2{
+font-family: 'Noto Serif', serif;
+font-weight: 400;
+font-size: 32px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
 

@@ -6,7 +6,6 @@ import { Home } from './pages/Home'
 import { Flower } from './pages/Flower'
 // import { ReactComponent as Arrow } from './attributes/arrow.svg'
 import './styling/hero.css'
-
 import './styling/app.css'
 
 export const App = () => {

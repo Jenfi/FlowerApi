@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <Route path="/">
       <header>
-        <Link to="/"><h2>FLOWERHUB</h2></Link>
+        <Link to="/"><h1>FLOWERHUB</h1></Link>
       </header>
     </Route>
   )
