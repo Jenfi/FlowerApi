@@ -6,6 +6,8 @@ import '../styling/flower.css'
 
 export const Flower = () => {
   const [uniqueFlower, setUniqueFlower] = useState([])
+  const [comments, setComments] = useState([])
+
   const { index } = useParams()
 
   // const flowerId = 0
@@ -22,8 +24,19 @@ export const Flower = () => {
       })
   }, [index])
 
+  useEffect(() => {
+    fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}.json`)
+      // fetch('https://flowers-mock-data.firebaseio.com/comments/jenfi/0.json')
+      .then((res) => res.json())
+      .then((json) => {
+        setComments(json)
+        console.log(json)
+      })
+  }, [])
+
   return (
     <article>
+
       {/* {Object.values(uniqueFlower).map((flower) => ( */}
       <section className="flower-section">
         <h1>{uniqueFlower.common_name} - <span>{uniqueFlower.latin_name}</span></h1>
@@ -54,7 +67,26 @@ export const Flower = () => {
       </section>
       {/* ))} */}
       <CommentForm />
-      <Comments />
+      {!comments && (
+
+        <p>There are no comments posted about {uniqueFlower.common_name} yet</p>
+
+      )}
+
+      {comments && (
+        <article className="comment-container">
+          {Object.values(comments).map((comment) => (
+            <div className="comment" >
+              <h2>{comment.comment}</h2>
+              <button type="button">Edit</button>
+              <button type="button">Remove</button>
+            </div>
+          ))
+          }
+        </article>
+      )}
+
+      {/* <Comments /> */}
 
       {/* {uniqueFlower.map((flower) => ( */}
       {/* <h2>{flower.common_name}</h2> */}
