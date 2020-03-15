@@ -4,6 +4,7 @@ import '../styling/app.css'
 export const CommentForm = () => {
 
   const [comment, setComment] = useState('')
+  // const [post, setPost] = useState()
 
   const handleSubmit = () => {
     // fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${flowerId}.json`, {

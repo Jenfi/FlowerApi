@@ -7,7 +7,8 @@ import '../styling/comment.css'
 
 export const Flower = () => {
   const [uniqueFlower, setUniqueFlower] = useState([])
-  const [comments, setComments] = useState([])
+  const [commented, setCommented] = useState([])
+  const [comment, setComment] = useState('')
   const { index } = useParams()
 
 
@@ -20,11 +21,20 @@ export const Flower = () => {
       })
   }, [index])
 
+  const handleSubmitComment = () => {
+    fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}.json`, {
+      method: 'POST',
+      body: JSON.stringify({ comment }),
+      headers: { 'Content-Type': 'application/json' }
+    }).catch((err) => console.log('error:', err))
+  }
+
+
   useEffect(() => {
     fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}.json`)
       .then((res) => res.json())
       .then((json) => {
-        setComments(json)
+        setCommented(json)
       })
   }, [])
 
@@ -40,7 +50,6 @@ export const Flower = () => {
         )}
         <div className="flower-details">
           <img src={uniqueFlower.cover_image} width="400px" alt="" />
-
           <ul className="flower-info">
             <li>About: <span>{uniqueFlower.notes}</span></li>
             <li>Blooming season: <span>{uniqueFlower.blooming_season}</span></li>
@@ -59,14 +68,32 @@ export const Flower = () => {
       </section>
       {/* ))} */}
       <section className="comments">
-        <CommentForm />
-        {!comments && (
+        <div className="message">
+          <h3>Share your thoughts with us!</h3>
+          <form>
+            <textarea
+              // placeholder="What's on your mind..?"
+              rows="3"
+              // Block re-sizeable
+              maxLength="200"
+              onChange={(event) => setComment(event.target.value)} />
+            <p>{comment.length}/200</p>
+            <button
+              className="comment-button"
+              type="submit"
+              onClick={handleSubmitComment}
+              disabled={comment.length < 1 || comment.length > 200 ? true : false}>
+              Comment
+        </button>
+          </form>
+        </div>
+        {/* <CommentForm /> */}
+        {!commented && (
           <h5>There are no comments posted about {uniqueFlower.common_name} yet</h5>
         )}
-        {comments && (
-          // <section className="comment-container">
+        {commented && (
           <>
-            {Object.values(comments).map((comment) => (
+            {Object.values(commented).map((comment) => (
               <ul className="comment-container" >
                 <li>{comment.comment}</li>
                 <div className="button-container">
@@ -76,12 +103,9 @@ export const Flower = () => {
               </ul>
             ))
             }
-            {/* </section> */}
           </>
         )}
-
       </section>
-      {/* <Comments /> */}
     </article>
   )
 }
