@@ -25,10 +25,9 @@ export const Home = () => {
       <h2>We have gathered all your favourite flowers</h2>
       <ul className="flower-deck">
         {flowers.map((flower, index) => (
-          <li className="flower-card">
+          <li className="flower-card" key={flower._id.oid}>
             <Link
-              to={`flower/${index}`}
-              key={index}>
+              to={`flower/${index}`}>
               <div
                 className="flower-container"
                 style={{ backgroundImage: `url(${flower.cover_image})` }}>{loading === true && (<LoadingSpinner />)}

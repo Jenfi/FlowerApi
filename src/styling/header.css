@@ -1,13 +1,13 @@
 header{
   height: 80px;
   position: fixed;
-  top: 20px;
+  top: 0;
   width:100%;
-  margin-bottom: 20px;
   z-index:1;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 h1{

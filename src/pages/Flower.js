@@ -10,7 +10,6 @@ import '../styling/flower.css'
 export const Flower = () => {
   const [uniqueFlower, setUniqueFlower] = useState([])
   const { flowerId } = useParams()
-  const [comments, setComments] = useState([])
   const [triggerRefetchComments, setTriggerRefetchComments] = useState(false)
   const [commented, setCommented] = useState([])
 
@@ -33,7 +32,6 @@ export const Flower = () => {
       .then((res) => res.json())
       .then((json) => {
         setCommented(json)
-        console.log(json)
       })
     setTriggerRefetchComments(false)
   }, [flowerId, triggerRefetchComments])
