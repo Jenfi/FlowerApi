@@ -124,12 +124,8 @@ export const Flower = () => {
                   <li>{comment.comment}</li>
                   <div className="button-container">
                     <DeleteComment
-                      onDelete={onDelete} />
-                    {/* <button
-                      type="button"
-                      className="remove-button">
-                      Remove
-                    </button> */}
+                      onDelete={onDelete}
+                      index={index} />
                   </div>
                 </ul>
               </>
