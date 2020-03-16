@@ -18,7 +18,7 @@ export const DeleteComment = (props) => {
       className="comment-button"
       type="submit"
       onClick={handleDelete}>
-      Remove XX
+      Remove
     </button>
   )
 }
