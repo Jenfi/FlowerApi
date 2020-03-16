@@ -1,14 +1,8 @@
 import React from 'react'
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
-import Loader from 'react-loader-spinner'
+import '../styling/loadingspinner.css'
 
 export const LoadingSpinner = () => {
   return (
-    <Loader
-      type="Puff"
-      color="#000"
-      height={80}
-      width={80}
-      timeout={3000} />
+    <div className="loading-spinner"></div>
   );
 }

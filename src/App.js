@@ -14,9 +14,9 @@ export const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop>
-        <article>
-          <Header />
-          <Hero />
+        <Header />
+        <Hero />
+        <main>
           <Switch>
             <Route exact path="/" component={Home}>
               <Home />
@@ -25,9 +25,9 @@ export const App = () => {
               <Flower />
             </Route>
           </Switch>
-          <Footer />
-        </article>
+        </main>
       </ScrollToTop>
+      <Footer />
     </BrowserRouter>
   )
 }

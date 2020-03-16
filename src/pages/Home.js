@@ -8,20 +8,21 @@ export const Home = () => {
   const [flowers, setFlowers] = useState([])
   const [loading, setLoading] = useState(false)
 
+  //FETCHING ALL FLOWERS
   useEffect(() => {
     setLoading(true)
     fetch('https://flowers-mock-data.firebaseio.com/flowers.json')
       .then((res) => res.json())
       .then((json) => {
         setFlowers(json)
-        setLoading(false)
+        // setLoading(false)
       })
   }, [])
 
-  if (loading === true) {
-    return (
-      <LoadingSpinner />)
-  }
+  // if (loading === true) {
+  //   return (
+  //     <LoadingSpinner />)
+  // }
 
   return (
     <article className="flower-list">
@@ -34,7 +35,7 @@ export const Home = () => {
               key={index}>
               <div
                 className="flower-container"
-                style={{ backgroundImage: `url(${flower.cover_image})` }}>
+                style={{ backgroundImage: `url(${flower.cover_image})` }}>{loading === true && (<LoadingSpinner />)}
                 {!flower.cover_image ? <h4>No pic available<br />{flower.latin_name}</h4> : null}
                 {flower.cover_image ? <h3 className="flower-highlight">{flower.latin_name}</h3> : null}
               </div>

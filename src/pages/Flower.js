@@ -11,31 +11,27 @@ import '../styling/flower.css'
 
 export const Flower = () => {
   const [uniqueFlower, setUniqueFlower] = useState([])
-  const [loading, setLoading] = useState(false)
   const { flowerId } = useParams()
 
+  //FETCHING DETAILS ABOUT SPECIFIC FLOWER
   useEffect(() => {
-    setLoading(true)
     fetch(`https://flowers-mock-data.firebaseio.com/flowers/${flowerId}.json`)
       .then((res) => res.json())
       .then((json) => {
         setUniqueFlower(json)
-        setLoading(false)
       })
   }, [flowerId])
 
-  if (loading === true) {
-    return (
-      <LoadingSpinner />
-    )
-  }
+
 
   return (
     <>
       <section className="flower-section">
         <h2>{uniqueFlower.common_name} - <span>{uniqueFlower.latin_name}</span></h2>
+
         {uniqueFlower.sun === true ? <Sunny /> : <Cloudy />}
         <div className="flower-details">
+
           <div
             className="flower-image"
             style={{ backgroundImage: `url(${uniqueFlower.cover_image})` }}>
