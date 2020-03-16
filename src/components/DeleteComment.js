@@ -1,27 +1,24 @@
 import React, { useState } from 'react'
 
-
 export const DeleteComment = (props) => {
-  const { name, comment } = props.comment
+  // const { name, comment } = props.comment
+  const index = 0
+  const commentId = '-M2TM8PMnzrCC0xlXvvN'
 
-  const [edit, setEdit] = useState(false)
-  // const [post, setPost] = useState()
-
-  const handleEditComment = () => {
-    // fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${flowerId}.json`, {
-    fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/0/${name}.json`, {
-
+  const handleDelete = () => {
+    fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}/${commentId}.json`, {
       method: 'DELETE',
-      body: JSON.stringify({ comment }),
+      body: '',
       headers: { 'Content-Type': 'application/json' }
     }).catch((err) => console.log('error:', err))
+      .then(() => props.onDelete(commentId))
   }
 
   return (
     <button
       className="comment-button"
       type="submit"
-      onClick={handleEditComment}>
+      onClick={handleDelete}>
       Remove XX
     </button>
   )

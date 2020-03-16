@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { ReactComponent as Cloudy } from '../attributes/cloud.svg'
 import { ReactComponent as Sunny } from '../attributes/sun.svg'
+import { DeleteComment } from '../components/DeleteComment'
 import '../styling/commentform.css'
 import '../styling/comment.css'
 import '../styling/flower.css'
@@ -14,6 +15,19 @@ export const Flower = () => {
   const [loading, setLoading] = useState(false)
   const { index } = useParams()
 
+  // const onDelete = (commentId) => {
+  //   const updatedThoughts = thoughts.map((thought) => {
+  //     if (thought._id === thoughtId) {
+  //       thought.heart += 1
+  //     }
+  //     return thought
+  //   })
+  //   setThoughts(updatedThoughts)
+  // }
+
+
+
+  //FETCH SPECIFIC FLOWER
   useEffect(() => {
     setLoading(true)
     fetch(`https://flowers-mock-data.firebaseio.com/flowers/${index}.json`)
@@ -24,6 +38,8 @@ export const Flower = () => {
       })
   }, [index])
 
+  // SEND COMMENT
+
   const handleSubmitComment = () => {
     fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}.json`, {
       method: 'POST',
@@ -32,6 +48,7 @@ export const Flower = () => {
     }).catch((err) => console.log('error:', err))
   }
 
+  // FETCH COMMENTS
   useEffect(() => {
     fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}.json`)
       .then((res) => res.json())
@@ -45,6 +62,19 @@ export const Flower = () => {
       <LoadingSpinner />
     )
   }
+
+  const onDelete = (commentId) => {
+    const name = "'-M2TM8PMnzrCC0xlXvvN'"
+    const updatedComments = Object.values(commented).filter((c) => {
+      if (name !== commentId) {
+        return comment
+      }
+      // return comment
+    })
+    setCommented(updatedComments)
+  }
+  console.log(commented)
+  // console.log(onDelete)
 
   return (
     <>
@@ -93,11 +123,13 @@ export const Flower = () => {
                 <ul className="comment-container" >
                   <li>{comment.comment}</li>
                   <div className="button-container">
-                    <button
+                    <DeleteComment
+                      onDelete={onDelete} />
+                    {/* <button
                       type="button"
                       className="remove-button">
                       Remove
-                    </button>
+                    </button> */}
                   </div>
                 </ul>
               </>
