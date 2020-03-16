@@ -14,68 +14,35 @@ export const Flower = () => {
   // const [commented, setCommented] = useState([])
   const [comment, setComment] = useState('')
   const [loading, setLoading] = useState(false)
-  const { index } = useParams()
-
-  // const onDelete = (commentId) => {
-  //   const updatedThoughts = thoughts.map((thought) => {
-  //     if (thought._id === thoughtId) {
-  //       thought.heart += 1
-  //     }
-  //     return thought
-  //   })
-  //   setThoughts(updatedThoughts)
-  // }
-
+  const { flowerId } = useParams()
 
 
   //FETCH SPECIFIC FLOWER
   useEffect(() => {
     setLoading(true)
-    fetch(`https://flowers-mock-data.firebaseio.com/flowers/${index}.json`)
+    fetch(`https://flowers-mock-data.firebaseio.com/flowers/${flowerId}.json`)
       .then((res) => res.json())
       .then((json) => {
         setUniqueFlower(json)
         setLoading(false)
       })
-  }, [index])
+  }, [flowerId])
 
   // SEND COMMENT
 
   const handleSubmitComment = () => {
-    fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}.json`, {
+    fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${flowerId}.json`, {
       method: 'POST',
       body: JSON.stringify({ comment }),
       headers: { 'Content-Type': 'application/json' }
     }).catch((err) => console.log('error:', err))
   }
 
-  // // FETCH COMMENTS
-  // useEffect(() => {
-  //   fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}.json`)
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       setCommented(json)
-  //     })
-  // }, [index])
-
   if (loading === true) {
     return (
       <LoadingSpinner />
     )
   }
-
-  // const onDelete = (commentId) => {
-  //   const name = "'-M2TM8PMnzrCC0xlXvvN'"
-  //   const updatedComments = Object.values(commented).filter((c) => {
-  //     if (name !== commentId) {
-  //       return comment
-  //     }
-  //     // return comment
-  //   })
-  //   setCommented(updatedComments)
-  // }
-  // console.log(commented)
-  // console.log(onDelete)
 
   return (
     <>
@@ -112,7 +79,7 @@ export const Flower = () => {
           </form>
         </div>
         <CommentList
-          index={index}
+          flowerId={flowerId}
           uniqueFlower={uniqueFlower} />
       </section>
     </>

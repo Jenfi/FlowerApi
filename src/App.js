@@ -21,7 +21,7 @@ export const App = () => {
             <Route exact path="/" component={Home}>
               <Home />
             </Route>
-            <Route exact path="/flower/:index" component={Flower}>
+            <Route exact path="/flower/:flowerId" component={Flower}>
               <Flower />
             </Route>
           </Switch>

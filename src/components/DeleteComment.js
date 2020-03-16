@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 
 export const DeleteComment = (props) => {
-  // const { name, comment } = props.comment
-  // const index = 0
-  const { index } = props
+  const { flowerId } = props
   const commentId = '-M2TM9odk7Geob3g25SS'
 
   const handleDelete = () => {
-    fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}/${commentId}.json`, {
+    fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${flowerId}/${commentId}.json`, {
       method: 'DELETE',
       body: '',
       headers: { 'Content-Type': 'application/json' }
