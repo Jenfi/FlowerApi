@@ -111,29 +111,9 @@ export const Flower = () => {
             </button>
           </form>
         </div>
-
-        {/* {!commented && (
-          <h5>There are no comments posted about {uniqueFlower.common_name} yet</h5>
-        )}
-
-        {commented && ( */}
-        {/* <> */}
-        <CommentList index={index} />
-        {/* {Object.values(commented).map((comment) => (
-              <>
-                {comment.length === 0 && (null)}
-                <ul className="comment-container" >
-                  <li>{comment.comment}</li>
-                  <div className="button-container">
-                    <DeleteComment
-                      onDelete={onDelete}
-                      index={index} />
-                  </div>
-                </ul>
-              </>
-            ))} */}
-        {/* </> */}
-        {/* )} */}
+        <CommentList
+          index={index}
+          uniqueFlower={uniqueFlower} />
       </section>
     </>
   )

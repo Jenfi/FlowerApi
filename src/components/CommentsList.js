@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { DeleteComment } from '../components/DeleteComment'
 
 export const CommentList = (props) => {
-  const { index } = props
+  const { index, uniqueFlower } = props
   const [commented, setCommented] = useState([])
 
   // FETCH COMMENTS
@@ -27,8 +27,8 @@ export const CommentList = (props) => {
   return (
     <>
       {!commented && (
-        // <h5>There are no comments posted about {uniqueFlower.common_name} yet</h5>
-        <h5>There are no comments posted about this flower yet</h5>
+        <h5>There are no comments posted about {uniqueFlower.common_name} yet</h5>
+        // <h5>There are no comments posted about this flower yet</h5>
 
       )}
 
