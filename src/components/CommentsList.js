@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { DeleteComment } from '../components/DeleteComment'
+import { DeleteComment } from './DeleteComment'
 
 export const CommentList = (props) => {
   const { flowerId, uniqueFlower } = props
@@ -13,15 +13,18 @@ export const CommentList = (props) => {
       })
   }, [flowerId])
 
+
   const onDelete = (commentId) => {
     const name = "'-M2TM8PMnzrCC0xlXvvN'"
-    const updatedComments = Object.values(commented).filter((c) => {
+    const updatedComments = Object.values(commented).filter(() => {
       if (name !== commentId) {
         return commented
       }
     })
     setCommented(updatedComments)
   }
+
+  console.log(commented)
 
   return (
     <>

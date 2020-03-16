@@ -4,7 +4,6 @@ export const CommentForm = (props) => {
   const { flowerId } = props
   const [comment, setComment] = useState('')
 
-  // SEND COMMENT
   const handleSubmitComment = () => {
     fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${flowerId}.json`, {
       method: 'POST',
