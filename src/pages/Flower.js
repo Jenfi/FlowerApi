@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { CommentForm } from '../components/CommentForm'
-import { ReactComponent as Cloudy } from '../attributes/cloud.svg'
-import { ReactComponent as Sunny } from '../attributes/sun.svg'
 import '../styling/comment.css'
 import '../styling/commentform.css'
 import '../styling/flower.css'
@@ -41,7 +39,7 @@ export const Flower = () => {
     <>
       <section className="flower-section">
         <h2>{uniqueFlower.common_name} - <span>{uniqueFlower.latin_name}</span></h2>
-        {uniqueFlower.sun === true ? <Sunny /> : <Cloudy />}
+        {uniqueFlower.sun === true ? <h5>I like it sunny!</h5> : <h5>I prefer standing in the shade..</h5>}
         <div className="flower-details">
           <div
             className="flower-image"
