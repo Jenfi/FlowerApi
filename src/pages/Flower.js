@@ -3,14 +3,15 @@ import { useParams } from 'react-router-dom'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { ReactComponent as Cloudy } from '../attributes/cloud.svg'
 import { ReactComponent as Sunny } from '../attributes/sun.svg'
-import { DeleteComment } from '../components/DeleteComment'
+// import { DeleteComment } from '../components/DeleteComment'
+import { CommentList } from '../components/CommentsList'
 import '../styling/commentform.css'
 import '../styling/comment.css'
 import '../styling/flower.css'
 
 export const Flower = () => {
   const [uniqueFlower, setUniqueFlower] = useState([])
-  const [commented, setCommented] = useState([])
+  // const [commented, setCommented] = useState([])
   const [comment, setComment] = useState('')
   const [loading, setLoading] = useState(false)
   const { index } = useParams()
@@ -48,14 +49,14 @@ export const Flower = () => {
     }).catch((err) => console.log('error:', err))
   }
 
-  // FETCH COMMENTS
-  useEffect(() => {
-    fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}.json`)
-      .then((res) => res.json())
-      .then((json) => {
-        setCommented(json)
-      })
-  }, [index])
+  // // FETCH COMMENTS
+  // useEffect(() => {
+  //   fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}.json`)
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       setCommented(json)
+  //     })
+  // }, [index])
 
   if (loading === true) {
     return (
@@ -63,17 +64,17 @@ export const Flower = () => {
     )
   }
 
-  const onDelete = (commentId) => {
-    const name = "'-M2TM8PMnzrCC0xlXvvN'"
-    const updatedComments = Object.values(commented).filter((c) => {
-      if (name !== commentId) {
-        return comment
-      }
-      // return comment
-    })
-    setCommented(updatedComments)
-  }
-  console.log(commented)
+  // const onDelete = (commentId) => {
+  //   const name = "'-M2TM8PMnzrCC0xlXvvN'"
+  //   const updatedComments = Object.values(commented).filter((c) => {
+  //     if (name !== commentId) {
+  //       return comment
+  //     }
+  //     // return comment
+  //   })
+  //   setCommented(updatedComments)
+  // }
+  // console.log(commented)
   // console.log(onDelete)
 
   return (
@@ -111,13 +112,14 @@ export const Flower = () => {
           </form>
         </div>
 
-        {!commented && (
+        {/* {!commented && (
           <h5>There are no comments posted about {uniqueFlower.common_name} yet</h5>
         )}
 
-        {commented && (
-          <>
-            {Object.values(commented).map((comment) => (
+        {commented && ( */}
+        {/* <> */}
+        <CommentList index={index} />
+        {/* {Object.values(commented).map((comment) => (
               <>
                 {comment.length === 0 && (null)}
                 <ul className="comment-container" >
@@ -129,9 +131,9 @@ export const Flower = () => {
                   </div>
                 </ul>
               </>
-            ))}
-          </>
-        )}
+            ))} */}
+        {/* </> */}
+        {/* )} */}
       </section>
     </>
   )
