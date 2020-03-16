@@ -18,12 +18,8 @@ export const App = () => {
           <Header />
           <Hero />
           <Switch>
-            <Route exact path="/" component={Home}>
-              <Home />
-            </Route>
-            <Route exact path="/flower/:flowerId" component={Flower}>
-              <Flower />
-            </Route>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/flower/:flowerId" component={Flower} />
           </Switch>
           <Footer />
         </article>
