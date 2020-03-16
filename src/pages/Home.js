@@ -15,14 +15,10 @@ export const Home = () => {
       .then((res) => res.json())
       .then((json) => {
         setFlowers(json)
-        // setLoading(false)
+        setLoading(false)
       })
   }, [])
 
-  // if (loading === true) {
-  //   return (
-  //     <LoadingSpinner />)
-  // }
 
   return (
     <article className="flower-list">
