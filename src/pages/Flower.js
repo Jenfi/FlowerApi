@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { LoadingSpinner } from '../components/LoadingSpinner'
 import { ReactComponent as Cloudy } from '../attributes/cloud.svg'
 import { ReactComponent as Sunny } from '../attributes/sun.svg'
-import { CommentList } from '../components/CommentsList'
 import { CommentForm } from '../components/CommentForm'
-import '../styling/commentform.css'
+import { CommentList } from '../components/CommentsList'
 import '../styling/comment.css'
+import '../styling/commentform.css'
 import '../styling/flower.css'
 
 export const Flower = () => {
@@ -21,8 +20,6 @@ export const Flower = () => {
         setUniqueFlower(json)
       })
   }, [flowerId])
-
-
 
   return (
     <>
