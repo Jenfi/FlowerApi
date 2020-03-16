@@ -3,19 +3,16 @@ import { useParams } from 'react-router-dom'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { ReactComponent as Cloudy } from '../attributes/cloud.svg'
 import { ReactComponent as Sunny } from '../attributes/sun.svg'
-// import { DeleteComment } from '../components/DeleteComment'
 import { CommentList } from '../components/CommentsList'
+import { CommentForm } from '../components/CommentForm'
 import '../styling/commentform.css'
 import '../styling/comment.css'
 import '../styling/flower.css'
 
 export const Flower = () => {
   const [uniqueFlower, setUniqueFlower] = useState([])
-  // const [commented, setCommented] = useState([])
-  const [comment, setComment] = useState('')
   const [loading, setLoading] = useState(false)
   const { flowerId } = useParams()
-
 
   //FETCH SPECIFIC FLOWER
   useEffect(() => {
@@ -27,16 +24,6 @@ export const Flower = () => {
         setLoading(false)
       })
   }, [flowerId])
-
-  // SEND COMMENT
-
-  const handleSubmitComment = () => {
-    fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${flowerId}.json`, {
-      method: 'POST',
-      body: JSON.stringify({ comment }),
-      headers: { 'Content-Type': 'application/json' }
-    }).catch((err) => console.log('error:', err))
-  }
 
   if (loading === true) {
     return (
@@ -63,20 +50,8 @@ export const Flower = () => {
       <section className="comments">
         <div className="message">
           <h3>Share your thoughts with us!</h3>
-          <form>
-            <textarea
-              rows="3"
-              maxLength="200"
-              onChange={(event) => setComment(event.target.value)} />
-            <p>{comment.length}/200</p>
-            <button
-              className="comment-button"
-              type="submit"
-              onClick={handleSubmitComment}
-              disabled={comment.length < 1 || comment.length > 200 ? true : false}>
-              Comment
-            </button>
-          </form>
+          <CommentForm
+            flowerId={flowerId} />
         </div>
         <CommentList
           flowerId={flowerId}
