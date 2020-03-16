@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { LoadingSpinner } from '../components/LoadingSpinner'
 import { ReactComponent as Cloudy } from '../attributes/cloud.svg'
 import { ReactComponent as Sunny } from '../attributes/sun.svg'
 import '../styling/commentform.css'
@@ -14,8 +15,6 @@ export const Flower = () => {
   const [loading, setLoading] = useState(false)
   const { index } = useParams()
 
-
-
   useEffect(() => {
     setLoading(true)
     fetch(`https://flowers-mock-data.firebaseio.com/flowers/${index}.json`)
@@ -23,7 +22,6 @@ export const Flower = () => {
       .then((json) => {
         setUniqueFlower(json)
         setLoading(false)
-        console.log(json)
       })
   }, [index])
 
@@ -35,7 +33,6 @@ export const Flower = () => {
     }).catch((err) => console.log('error:', err))
   }
 
-
   useEffect(() => {
     fetch(`https://flowers-mock-data.firebaseio.com/comments/jenfi/${index}.json`)
       .then((res) => res.json())
@@ -44,10 +41,9 @@ export const Flower = () => {
       })
   }, [])
 
-
   if (loading === true) {
     return (
-      <h3>Loading...</h3>
+      <LoadingSpinner />
     )
   }
 
