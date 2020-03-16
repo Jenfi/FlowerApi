@@ -54,9 +54,8 @@ export const Flower = () => {
         <div className="flower-details">
           <div
             className="flower-image"
-            style={{ backgroundImage: `url(${uniqueFlower.cover_image})` }}>
+            style={{ backgroundImage: `url(${uniqueFlower.cover_image})` }}>{!uniqueFlower.cover_image ? <h3>No pic available</h3> : null}
           </div>
-          {!uniqueFlower.cover_image ? <h4>No pic available</h4> : null}
           <ul className="flower-info">
             <li>Blooming season: <span>{uniqueFlower.blooming_season}</span></li>
             <li>About: <span>{uniqueFlower.notes}</span></li>
