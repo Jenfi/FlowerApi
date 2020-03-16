@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { DeleteComment } from './DeleteComment'
 
 export const CommentList = (props) => {
   const { flowerId, uniqueFlower } = props
@@ -13,16 +12,6 @@ export const CommentList = (props) => {
       })
   }, [flowerId])
 
-  const onDelete = (commentId) => {
-    const name = '-M2XzC2pprI0f-SOHHcD'
-    const updatedComments = Object.values(commented).filter(() => {
-      if (name !== commentId) {
-        return commented
-      }
-    })
-    setCommented(updatedComments)
-  }
-
   return (
     <>
       {!commented && (
@@ -31,17 +20,11 @@ export const CommentList = (props) => {
 
       {commented && (
         <>
-          {/* {Object.values(commented).map((comment, index) => ( */}
           {Object.values(commented).map((comment) => (
 
             <ul className="comment-container" >
               <li>{comment.comment}</li>
               <div className="button-container">
-                <DeleteComment
-                  onDelete={onDelete}
-                  flowerId={flowerId}
-                // key={index}
-                />
               </div>
             </ul>
           ))}
