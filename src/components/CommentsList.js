@@ -13,9 +13,8 @@ export const CommentList = (props) => {
       })
   }, [flowerId])
 
-
   const onDelete = (commentId) => {
-    const name = "'-M2TM8PMnzrCC0xlXvvN'"
+    const name = '-M2YZXROgaJUZpVf3bR4'
     const updatedComments = Object.values(commented).filter(() => {
       if (name !== commentId) {
         return commented
@@ -23,8 +22,6 @@ export const CommentList = (props) => {
     })
     setCommented(updatedComments)
   }
-
-  console.log(commented)
 
   return (
     <>
@@ -34,13 +31,14 @@ export const CommentList = (props) => {
 
       {commented && (
         <>
-          {Object.values(commented).map((comment) => (
-            < ul className="comment-container" >
+          {Object.values(commented).map((comment, index) => (
+            <ul className="comment-container" >
               <li>{comment.comment}</li>
               <div className="button-container">
                 <DeleteComment
                   onDelete={onDelete}
-                  flowerId={flowerId} />
+                  flowerId={flowerId}
+                  key={index} />
               </div>
             </ul>
           ))}

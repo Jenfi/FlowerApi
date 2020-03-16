@@ -14,7 +14,6 @@ export const Flower = () => {
   const [loading, setLoading] = useState(false)
   const { flowerId } = useParams()
 
-  //FETCH SPECIFIC FLOWER
   useEffect(() => {
     setLoading(true)
     fetch(`https://flowers-mock-data.firebaseio.com/flowers/${flowerId}.json`)
