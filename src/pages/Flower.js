@@ -7,7 +7,6 @@ import '../styling/commentform.css'
 import '../styling/comment.css'
 import '../styling/flower.css'
 
-
 export const Flower = () => {
   const [uniqueFlower, setUniqueFlower] = useState([])
   const [commented, setCommented] = useState([])
@@ -39,7 +38,7 @@ export const Flower = () => {
       .then((json) => {
         setCommented(json)
       })
-  }, [])
+  }, [index])
 
   if (loading === true) {
     return (
@@ -51,19 +50,16 @@ export const Flower = () => {
     <>
       <section className="flower-section">
         <h2>{uniqueFlower.common_name} - <span>{uniqueFlower.latin_name}</span></h2>
-
         {uniqueFlower.sun === true ? <Sunny /> : <Cloudy />}
-
-        < div className="flower-details">
-          <div className="flower-image" style={{ backgroundImage: `url(${uniqueFlower.cover_image})` }}></div> {!uniqueFlower.cover_image ? <h4>No pic available</h4> : null}
-          {/* {uniqueFlower.cover_image ? <img src={uniqueFlower.cover_image} width="400px" alt="" /> : <h5 className="no-picture">No picture available</h5>} */}
+        <div className="flower-details">
+          <div
+            className="flower-image"
+            style={{ backgroundImage: `url(${uniqueFlower.cover_image})` }}>
+          </div>
+          {!uniqueFlower.cover_image ? <h4>No pic available</h4> : null}
           <ul className="flower-info">
             <li>About: <span>{uniqueFlower.notes}</span></li>
             <li>Blooming season: <span>{uniqueFlower.blooming_season}</span></li>
-            <li>Soil preferences: <span> </span></li>
-            {/* LÄGG TILL EN .SPLICE '' */}
-            <li>Height:
-            </li>
           </ul>
         </div>
       </section>
@@ -73,7 +69,6 @@ export const Flower = () => {
           <form>
             <textarea
               rows="3"
-              // Block re-sizeable
               maxLength="200"
               onChange={(event) => setComment(event.target.value)} />
             <p>{comment.length}/200</p>
@@ -83,27 +78,31 @@ export const Flower = () => {
               onClick={handleSubmitComment}
               disabled={comment.length < 1 || comment.length > 200 ? true : false}>
               Comment
-        </button>
+            </button>
           </form>
         </div>
+
         {!commented && (
           <h5>There are no comments posted about {uniqueFlower.common_name} yet</h5>
         )}
+
         {commented && (
           <>
             {Object.values(commented).map((comment) => (
               <>
                 {comment.length === 0 && (null)}
-                < ul className="comment-container" >
+                <ul className="comment-container" >
                   <li>{comment.comment}</li>
                   <div className="button-container">
-                    <button type="button" className="remove-button">Remove</button>
-                    {/* <DeleteComment /> */}
+                    <button
+                      type="button"
+                      className="remove-button">
+                      Remove
+                    </button>
                   </div>
                 </ul>
               </>
-            ))
-            }
+            ))}
           </>
         )}
       </section>

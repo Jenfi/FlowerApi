@@ -6,7 +6,9 @@ export const Hero = () => {
 
   return (
     <section className="hero-container">
-      <div className="hero" style={{ backgroundImage: `url(${hero2})` }} />
+      <div
+        className="hero"
+        style={{ backgroundImage: `url(${hero2})` }} />
     </section>
   )
 }

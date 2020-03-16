@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
-import { Home } from './pages/Home'
 import { Flower } from './pages/Flower'
-import { Footer } from './components/Footer'
-
-// import { ReactComponent as Arrow } from './attributes/arrow.svg'
-import './styling/hero.css'
+import { Home } from './pages/Home'
 import './styling/app.css'
+import './styling/hero.css'
+
 
 export const App = () => {
-  // const [showFlowers, setShowFlowers] = useState(false)
 
   return (
     <BrowserRouter>
@@ -22,7 +20,6 @@ export const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
-          {/* <Route exact path="/flower/:flowerId"> */}
           <Route exact path="/flower/:index">
             <Flower />
           </Route>
