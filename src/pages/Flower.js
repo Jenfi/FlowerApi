@@ -58,8 +58,8 @@ export const Flower = () => {
           </div>
           {!uniqueFlower.cover_image ? <h4>No pic available</h4> : null}
           <ul className="flower-info">
-            <li>About: <span>{uniqueFlower.notes}</span></li>
             <li>Blooming season: <span>{uniqueFlower.blooming_season}</span></li>
+            <li>About: <span>{uniqueFlower.notes}</span></li>
           </ul>
         </div>
       </section>
